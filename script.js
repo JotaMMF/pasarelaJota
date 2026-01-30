@@ -4,6 +4,11 @@ let btnRandom = document.querySelector("#Random");
 let btnAnterior = document.querySelector("#Anterior");
 let btnSiguiente = document.querySelector("#Siguiente");
 
+let sndClick = document.querySelector('#UIFX2');
+let sndHover = document.querySelector('#UIFX5');
+let sndRandom = document.querySelector('#UIFX7');
+
+
 let img = document.querySelector("#Imagen");
 
 let titulo = document.querySelector("#Titulo");
@@ -176,6 +181,7 @@ let indiceGaleria = 0;
 //--------------Funciones-------------
 
 function galInicio() {
+  sndClick.play();
   indiceGaleria = 0;
   cargarObj(indiceGaleria);
 }
@@ -186,6 +192,7 @@ function galRandom() {
 }
 
 function galAnterior() {
+  sndClick.play();
   if (indiceGaleria > 0) {
     indiceGaleria--;
   } else indiceGaleria = galeriaCoches.coches.length - 1;
@@ -194,6 +201,7 @@ function galAnterior() {
 }
 
 function galSiguiente() {
+  sndClick.play();
   if (indiceGaleria < galeriaCoches.coches.length - 1) {
     indiceGaleria++;
   } else indiceGaleria = 0;
