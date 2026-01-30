@@ -4,11 +4,6 @@ let btnRandom = document.querySelector("#Random");
 let btnAnterior = document.querySelector("#Anterior");
 let btnSiguiente = document.querySelector("#Siguiente");
 
-let sndClick = document.querySelector('#UIFX2');
-let sndHover = document.querySelector('#UIFX5');
-let sndRandom = document.querySelector('#UIFX7');
-
-
 let img = document.querySelector("#Imagen");
 
 let titulo = document.querySelector("#Titulo");
@@ -176,22 +171,33 @@ const galeriaCoches = {
   ]
 };
 
+const sndClick = new Audio("UIFX5.mp3");
+const sndHover = new Audio("UIFX2.mp3");
+const sndRandom = new Audio("UIFX7.mp3");
+
 let indiceGaleria = 0;
 
 //--------------Funciones-------------
 
 function galInicio() {
+  sndClick.pause();
+  sndClick.currentTime=0;
   sndClick.play();
   indiceGaleria = 0;
   cargarObj(indiceGaleria);
 }
 
 function galRandom() {
+  sndRandom.pause();
+  sndRandom.currentTime=0;
+  sndRandom.play();
   indiceGaleria= Math.floor(Math.random()*galeriaCoches.coches.length);
   cargarObj(indiceGaleria);
 }
 
 function galAnterior() {
+  sndClick.pause();
+  sndClick.currentTime=0;
   sndClick.play();
   if (indiceGaleria > 0) {
     indiceGaleria--;
@@ -201,6 +207,8 @@ function galAnterior() {
 }
 
 function galSiguiente() {
+  sndClick.pause();
+  sndClick.currentTime=0;
   sndClick.play();
   if (indiceGaleria < galeriaCoches.coches.length - 1) {
     indiceGaleria++;
@@ -255,12 +263,26 @@ function listarDetallesCoche(index) {
   return miLista;
 }
 
+function hover() {
+  sndHover.pause();
+  sndHover.currentTime=0;
+  sndHover.play();
+}
+
+
 //------------EventListeners---------
 
 btnInicio.addEventListener("click", galInicio);
+btnInicio.addEventListener("mouseenter",hover);
+
 btnRandom.addEventListener("click", galRandom);
+btnRandom.addEventListener("mouseenter",hover);
+
 btnAnterior.addEventListener("click", galAnterior);
+btnAnterior.addEventListener("mouseenter",hover);
+
 btnSiguiente.addEventListener("click", galSiguiente);
+btnSiguiente.addEventListener("mouseenter",hover);
 
 //---------------EJECUCIÓN-----------
 cargarObj(0);
